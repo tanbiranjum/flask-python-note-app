@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block title %} Changed {% endblock %}
+
+{% block content %}
+<ul class="list-group" id="notes">
+    {% for note in notes %}
+    <li class="list-group__item">
+      {{ note.data }}
+      <button
+        type="button"
+        class="list-group__btn"
+        onClick="deleteNote({{ note.id }})"
+        title="button"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </li>
+    {% endfor %}
+  </ul>
+<form method="post" class="form note-form">
+  <h3 align="center" class="form__title">Create a note</h3>
+  <div class="form-group">
+    <label for="note" class="form-group__label">Note</label>
+    <input type="text" name="note" class="form-group__input" title="note" />
+  </div>
+  <button type="submit" class="form__button form__button--login">Create</button>
+</form>
+
+{% endblock %}
